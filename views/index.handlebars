@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title></title>
+</head>
+
+<body>
+    <div class="greetings">
+        <h2>Greeting App</h2>
+        <form action="/greeted" method="POST">
+            <div class="textbox">
+                <div class="name-validate" id="validate">{{messages.info}}</div>
+                <input class="name-text" type="text" name="name" placeholder="Enter your name" value="{{settings.name}}">
+                <span class="numberOfGreetings">0</span>
+            </div>
+
+            <label for="">
+                <input type="radio" name="radioBtn" id="radioButton" class="theRadioBtn" value="english">
+                <span class="label-body">English</span>
+            </label>
+
+            <label for="">
+                <input type="radio" name="radioBtn" id="radioButton" class="theRadioBtn" value="zulu">
+                <span class="label-body">IsiZulu</span>
+            </label>
+
+            <label for="">
+                <input type="radio" name="radioBtn" id="radioButton" class="theRadioBtn" value="sotho">
+                <span class="label-body">SeSotho</span>
+            </label>
+
+            <label for="">
+                <input type="radio" name="radioBtn" id="radioButton" class="theRadioBtn" value="pedi">
+                <span class="label-body">Sepedi</span>
+            </label>
+
+            <label for="">
+                <input type="radio" name="radioBtn" id="radioButton" class="theRadioBtn" value="venda">
+                <span class="label-body">Tshivenda</span>
+            </label>
+
+            <div class="text-answer">
+                <span class="answer" value="" type="span">{{greeted}}</span>
+            </div>
+
+            <div class="buttons">
+                <button class="greet" type="submit" name="button">Greet</button>
+                {{!-- <button class="reset" type="submit" name="reset-button">Reset</button> --}}
+            </div>
+        </form>
+        <table>
+            <tr>
+                <td>
+                    <a href="/counter">Show-greeted-names</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
