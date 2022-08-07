@@ -24,13 +24,6 @@ describe('The Greeting App', function(){
         assert.equal('Enter the name not the number', greet.displayigErrorMessages());
     });
 
-    it("It should print 'This name has been greeted before' if the user entered the same name for the second time", function(){
-        const greet = GreetApp();
-
-        greet.setName('Walter');
-        assert.equal('This name has been greeted', greet.displayigErrorMessages());
-    });
-
     // it("It should print 'Please select the language' if the radio btn is not clicked", function(){
     //     const greet = GreetApp();
 
@@ -78,14 +71,7 @@ describe('The Greeting App', function(){
         
         greet.setName('Tshepo');
         greet.setName('Musa');
-        assert.equal(2, greet.returnNumberOfGreetedUsers().length);
+        assert.equal(2, greet.showTheCounter());
     });
-
-    // it('count', function(){
-    //     const greet = GreetApp();
-        
-    //     greet.setName('Tumelo');
-    //     assert.equal(1, greet.greetedUsers().length);
-    // });
 
 });

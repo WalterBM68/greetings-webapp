@@ -14,9 +14,14 @@
         <h2>Greeting App</h2>
         <form action="/greeted" method="POST">
             <div class="textbox">
-                <div class="name-validate" id="validate">{{messages.info}}</div>
-                <input class="name-text" type="text" name="name" placeholder="Enter your name" value="{{settings.name}}">
-                <span class="numberOfGreetings">0</span>
+                {{#if messages.info}}
+                <div class="name-validate" id="validate">
+                    <h5> {{messages.info}} </h5>
+                </div>
+                {{/if}}
+
+                <input class="name-text" type="text" name="name"  placeholder="Enter your name" value="{{settings.name}}">
+                <span class="numberOfGreetings" name="count">{{greetedNames}}</span>
             </div>
 
             <label for="">
@@ -50,9 +55,10 @@
 
             <div class="buttons">
                 <button class="greet" type="submit" name="button">Greet</button>
-                {{!-- <button class="reset" type="submit" name="reset-button">Reset</button> --}}
+                <button class="reset" type="submit" name="reset-button">Reset</button>
             </div>
         </form>
+
         <table>
             <tr>
                 <td>

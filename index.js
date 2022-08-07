@@ -12,7 +12,14 @@ app.engine("handlebars", exphbs.engine({ extname: "handlebars", defaultLayout: f
 app.set("view engine", "handlebars");
 
 app.use(express.static("public"));
-// app.use(flash());
+app.use(
+  session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+  })
+);
+app.use(flash());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -20,24 +27,49 @@ app.use(bodyParser.json());
 app.get("/", function(req, res){
   res.render("index", {
     settings: greetings.getName(),
-    greeted: greetings.returnMessage()
+    greeted: greetings.returnMessage(),
+    counting: greetings.returnNumberOfGreetedUsers(),
+    greetedNames: greetings.showTheCounter()
   });
-  // req.flash('info', 'Welcome');
+  
+  
 });
 
 app.post("/greeted", function(req, res){
   greetings.setName(
     req.body.name
   );
+  req.flash('info', greetings.displayigErrorMessages());
+
   greetings.greetingTheUser(req.body.radioBtn);
+  greetings.countingAllGreetedUsers();
   
   res.redirect("/");
 });
 
-app.get("/counter", function(req, res){});
+app.get('/greet', function(req, res){
+  res.render('greet', {
+    names: greetings.returnDuplicates(),
+  });
+
+  res.redirect('/');
+});
+
+app.get("/counter/:name", function(req, res){
+  const name = req.params.name
+
+  res.render('counter',{
+    user: name,
+    count: greetings.countingAllGreetedUsers(name),
+   
+  });
+});
 
 const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, function(){
   console.log("The greetings app started at port:", PORT);
 });
+
+
+
