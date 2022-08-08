@@ -27,49 +27,39 @@ app.use(bodyParser.json());
 app.get("/", function(req, res){
   res.render("index", {
     settings: greetings.getName(),
-    greeted: greetings.returnMessage(),
-    counting: greetings.returnNumberOfGreetedUsers(),
+    names: greetings.returnMessage(),
     greetedNames: greetings.showTheCounter()
-  });
-  
-  
+  }); 
 });
 
-app.post("/greeted", function(req, res){
+app.post("/greet", function(req, res){
   greetings.setName(
     req.body.name
   );
   req.flash('info', greetings.displayigErrorMessages());
-
   greetings.greetingTheUser(req.body.radioBtn);
-  greetings.countingAllGreetedUsers();
   
   res.redirect("/");
 });
 
-app.get('/greet', function(req, res){
-  res.render('greet', {
-    names: greetings.returnDuplicates(),
+app.get('/greeted', function(req, res){
+  res.render('greeted', {
+    greeted: greetings.returnDuplicates(),
   });
-
-  res.redirect('/');
 });
 
 app.get("/counter/:name", function(req, res){
-  const name = req.params.name
+  const { name } = req.params.name;
+  greetings.countingAllGreetedUsers(name);
 
   res.render('counter',{
     user: name,
-    count: greetings.countingAllGreetedUsers(name),
-   
+    count: greetings.returnAllGreetedUsers(), 
   });
 });
 
 const PORT = process.env.PORT || 5001;
-
 app.listen(PORT, function(){
   console.log("The greetings app started at port:", PORT);
 });
-
-
 

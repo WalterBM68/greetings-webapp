@@ -10,8 +10,8 @@ body{
     color: red;
 }
 
-table{
-    margin: auto;
+.theCounter{
+    margin-left: 100px;
 }
 
 .greetings{

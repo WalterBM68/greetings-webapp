@@ -12,11 +12,12 @@
 <body>
     <div class="greetings">
         <h2>Greeting App</h2>
-        <form action="/greeted" method="POST">
+        <form action="/greet" method="POST">
+
             <div class="textbox">
                 {{#if messages.info}}
                 <div class="name-validate" id="validate">
-                    <h5> {{messages.info}} </h5>
+                    <h4> {{messages.info}} </h4>
                 </div>
                 {{/if}}
 
@@ -50,22 +51,22 @@
             </label>
 
             <div class="text-answer">
-                <span class="answer" value="" type="span">{{greeted}}</span>
+                <span class="answer" value="" type="span">{{names}}</span>
             </div>
 
             <div class="buttons">
-                <button class="greet" type="submit" name="button">Greet</button>
-                <button class="reset" type="submit" name="reset-button">Reset</button>
+                <button class="greet" type="submit" name="button">Greet</button>   
             </div>
         </form>
+        
+        <div class="greetedNames">
+        <a href="/greeted"> Show-greeted-names </a>
+        {{!-- <button class="reset" type="submit" name="reset-button">Show Names</button> --}}
+        </div>
 
-        <table>
-            <tr>
-                <td>
-                    <a href="/counter">Show-greeted-names</a>
-                </td>
-            </tr>
-        </table>
+        <div class="theCounter">
+        <a href="/counter"></a>
+        </div>
     </div>
 </body>
 

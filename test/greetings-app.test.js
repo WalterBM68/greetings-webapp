@@ -74,4 +74,24 @@ describe('The Greeting App', function(){
         assert.equal(2, greet.showTheCounter());
     });
 
+    it('It should be able to return all greeted users', function(){
+        const greet = GreetApp();
+        
+        greet.setName('Tshepo');
+        greet.setName('Musa');
+        greet.setName('Musa');
+        assert.deepEqual(['Tshepo','Musa','Musa'], greet.returnDuplicates());
+    });
+
+    it('It should count how many times a name has been greeted', function(){
+        const greet = GreetApp();
+        
+        greet.setName('Tshepo');
+        greet.setName('Musa');
+        greet.setName('Musa');
+        greet.setName('Musa');
+        greet.countingAllGreetedUsers('Musa')
+        assert.equal(3, greet.returnAllGreetedUsers());
+    });
+
 });

@@ -59,15 +59,14 @@ module.exports = function greetingsFunction(){
     let count = 0;
     function countingAllGreetedUsers(name){
        for(let i = 0; i < duplicateNames.length; i++){
-            if(duplicateNames[i].includes(name)){
+            if(duplicateNames[i] === name){
                 count++;
             }
         }
-        return count;
     }
 
-    function returnNumberOfGreetedUsers(){
-        return countingAllGreetedUsers();
+    function returnAllGreetedUsers(){
+        return count;
     }
 
     function showTheCounter(){
@@ -85,7 +84,7 @@ module.exports = function greetingsFunction(){
         greetingTheUser, 
         returnMessage,
         countingAllGreetedUsers,
-        returnNumberOfGreetedUsers,
+        returnAllGreetedUsers,
         showTheCounter,
         returnDuplicates
     }
