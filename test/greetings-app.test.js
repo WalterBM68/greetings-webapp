@@ -90,7 +90,7 @@ describe('The Greeting App', function(){
         greet.setName('Musa');
         greet.setName('Musa');
         greet.setName('Musa');
-        greet.countingAllGreetedUsers('Musa')
+        greet.countingAllGreetedUsers('Musa');
         assert.equal(3, greet.returnAllGreetedUsers());
     });
 

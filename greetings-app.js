@@ -1,16 +1,16 @@
 module.exports = function greetingsFunction(){
     let name = '';
-    let errorMessage = '';
     let duplicateNames = [];
     let noDuplicateNames = [];
+    let errorMessage = '';
 
     function setName(userName){
         name = userName;
         if(name === ''){
-            return errorMessage = 'Name is required!';
+            return 'Name is required!';
         }
         if(name == Number(name)){
-            return errorMessage = 'Enter the name not the number'; 
+            return 'Enter the name not the number'; 
         }
         duplicateNames.push(name);
 
@@ -26,10 +26,14 @@ module.exports = function greetingsFunction(){
     function displayigErrorMessages(){
         if(name === ''){
             return 'Name is required!';
-        }  
-        if(name == Number(name)){
+        }else if(!name.match(/^[a-zA-Z]+$/)){
+            return "Please enter correct name";
+        }else if(name == Number(name)){
             return 'Enter the name not the number';
         }
+        // else{
+        //     return "Please select the language";
+        // }
     }
 
     let message = '';
@@ -56,16 +60,13 @@ module.exports = function greetingsFunction(){
         return message;
     }
 
-    let count = 0;
     function countingAllGreetedUsers(name){
+       let count = 0;
        for(let i = 0; i < duplicateNames.length; i++){
             if(duplicateNames[i] === name){
                 count++;
             }
         }
-    }
-
-    function returnAllGreetedUsers(){
         return count;
     }
 
@@ -73,8 +74,8 @@ module.exports = function greetingsFunction(){
         return noDuplicateNames.length
     }
 
-    function returnDuplicates(){
-        return duplicateNames;
+    function returnNoDuplicates(){
+        return noDuplicateNames;
     }
 
     return{
@@ -84,25 +85,10 @@ module.exports = function greetingsFunction(){
         greetingTheUser, 
         returnMessage,
         countingAllGreetedUsers,
-        returnAllGreetedUsers,
         showTheCounter,
-        returnDuplicates
+        returnNoDuplicates,
     }
 }
-
-// function selectingTheLanguage(){
-//     return 'Please select the language';
-// }
-
-// function messageAfterTheResetBtnClicked(){
-//     return 'You have deleted all the names';
-// }
-
-// let counting = name.length; 
-        // return counting;
-
-// name = theName; 
-        // duplicateNames.push(name); 
 
  /*
         if(userName){
@@ -116,3 +102,5 @@ module.exports = function greetingsFunction(){
             }  
         }
         */
+
+        // 

@@ -44,17 +44,15 @@ app.post("/greet", function(req, res){
 
 app.get('/greeted', function(req, res){
   res.render('greeted', {
-    greeted: greetings.returnDuplicates(),
+    greeted: greetings.returnNoDuplicates(),
   });
 });
 
 app.get("/counter/:name", function(req, res){
-  const { name } = req.params.name;
-  greetings.countingAllGreetedUsers(name);
-
+  const name = req.params.name;
   res.render('counter',{
     user: name,
-    count: greetings.returnAllGreetedUsers(), 
+    count: greetings.countingAllGreetedUsers(name)
   });
 });
 
