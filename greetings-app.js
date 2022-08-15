@@ -2,62 +2,55 @@ module.exports = function greetingsFunction(){
     let name = '';
     let duplicateNames = [];
     let noDuplicateNames = [];
-    let errorMessage = '';
+    let language = '';
 
     function setName(userName){
         name = userName;
-        if(name === ''){
-            return 'Name is required!';
+        if(name){
+            duplicateNames.push(name);    
         }
-        if(name == Number(name)){
-            return 'Enter the name not the number'; 
+    } 
+    function storingNames(){
+        if(name && language){
+            if(noDuplicateNames.indexOf(name) < 0){
+                noDuplicateNames.push(name);
+            }           
         }
-        duplicateNames.push(name);
-
-        if(noDuplicateNames.indexOf(name) < 0){
-            noDuplicateNames.push(name);
-        }
-    }
+    } 
 
     function getName(){
         return name;
     }
 
+    function setLanguage(theLanguage){
+        language = theLanguage;
+    }
+    function getLanguage(){
+        if(language === 'english' && name !== ''){
+            return 'Hello';
+        }else if(language === 'zulu' && name !== ''){
+            return 'Sawubona';
+        }else if(language === 'pedi' && name !== ''){
+            return 'Thobela';
+        }else if(name !== ''){
+            return name = '';
+        }else{
+            return language = '';
+        }
+    }
+
     function displayigErrorMessages(){
-        if(name === ''){
+        if(!language){
+            return 'Please select a language';
+        }
+        if(name === '' && language !== ''){
             return 'Name is required!';
-        }else if(!name.match(/^[a-zA-Z]+$/)){
-            return "Please enter correct name";
-        }else if(name == Number(name)){
-            return 'Enter the name not the number';
         }
-        // else{
-        //     return "Please select the language";
-        // }
     }
 
-    let message = '';
-    function greetingTheUser(selectedBtn){
-        if(selectedBtn === "venda"){
-            message = `Ndi matsheloni ${getName()}`;
-        }
-        if(selectedBtn === "english"){
-            message = `Hello ${getName()}`;
-        }
-        if(selectedBtn === "zulu"){
-            message = `Sawubona ${getName()}`;
-        }
-        if(selectedBtn === "pedi"){
-            message = `Thobela ${getName()}`;
-        }
-        if(selectedBtn === "sotho"){
-            message = `Dumelang ${getName()}`;
-        } 
-        return message;
-    }
-
-    function returnMessage(){
-        return message;
+    function greetingTheUser(){
+        let message = `${getLanguage()} ${name}`
+        return message; 
     }
 
     function countingAllGreetedUsers(name){
@@ -71,36 +64,40 @@ module.exports = function greetingsFunction(){
     }
 
     function showTheCounter(){
-        return noDuplicateNames.length
+        
+            return noDuplicateNames.length;
+        
+        
     }
 
     function returnNoDuplicates(){
         return noDuplicateNames;
     }
 
+    function returnDuplicates(){
+        return duplicateNames;
+    }
+
+    function clearData(){
+        name = '';
+        duplicateNames = [];
+        noDuplicateNames = [];
+        language = '';
+        message = '';
+    }
+
     return{
         setName,
         getName,
+        setLanguage,
+        getLanguage,
         displayigErrorMessages,  
         greetingTheUser, 
-        returnMessage,
         countingAllGreetedUsers,
         showTheCounter,
         returnNoDuplicates,
+        returnDuplicates,
+        clearData,
+        storingNames
     }
 }
-
- /*
-        if(userName){
-            if(userName.match(/^[a-zA-Z]+$/)){
-                let lowerCase = userName.toLowerCase();
-                if(name[lowerCase] === undefined || name[lowerCase] === null && name[lowerCase] !== Number){
-                    name[lowerCase] = 0;
-                }
-                name[lowerCase]++;
-                console.log(name);
-            }  
-        }
-        */
-
-        // 

@@ -1,26 +1,69 @@
 body{
     font-family: sans-serif;
+    background-color: lightskyblue;
 }
-
 .name-validate{
     margin-top: -12%;
     margin-bottom: -4%;
-    font-size: 22px;
+    font-size: 20px;
     height: 50px;
     color: red;
 }
 
-.greetedNames{
-    margin-left: 100px;
+.theRadioBtn1{
+    margin-left: 15px;
+}
+.theRadioBtn2, .theRadioBtn3{
+   margin-left: 70px;
 }
 
+label{
+    margin-bottom: 25px;
+}
+.textbox{
+    margin-bottom: 2px;
+}
+
+.greetedNames{
+    margin-left: 100px;
+    text-decoration: none;
+}
+
+.buttons{
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+button:hover{
+    color: black;
+}
+.theRadioBtn{
+    padding: 5px;
+}
+
+a{
+    text-decoration: none;
+    color: gray;
+    cursor: pointer;
+    transition: .5s ease;
+}
+a:hover{
+    color: black;
+}
+
+h4{
+    margin-bottom: 1px;
+}
 .greetings{
-    border: 4px solid #373737;
+    width: 420px;
     margin: auto;
+    margin-top: 80px;
+    font-size: 20px;
+    background-color: gray;
+    margin-bottom: 30px;
+    border-radius: 25px;
     padding: 1rem;
-    font-size: 18px;
-    background-color: #0a0a;
-    border-radius: 11%;
 }
 form{
     display: flex;
@@ -29,268 +72,39 @@ form{
 h2{
     text-align: center;
     margin-top: 5px;
+    color: white;
 }
 .greet{
     height: 50px;
-    background-color: grey;
-    float: left;
+    background-color: rgb(27, 119, 97);
     font-size: 20px;
+    border-radius: 15px;
     cursor: pointer;
 }
 .reset{
     height: 50px;
-    margin-right: 175px;
-    background-color: grey;
-    float: right;
+    background-color: rgb(27, 119, 97);
+    border-radius: 15px;
     font-size: 20px;
     cursor: pointer;
 }
 .name-text{
-    width: 41%;
-    height: 35px;
+    height: 26px;
+    padding: 5px 10px;
     border:  2px solid #2980B9;
     float: left;
-    font-size: 16px;
+    border-radius: 15px;
+    font-size: 20px;
     margin: 0px 0px 10px 0px;
 } 
 .answer{
-    width: 43%;
-    height: 180px;
+    align-self: center;
+    font-size: 25px;
     border: none;
-    float: right;
-    margin-right: 2px;
-    margin-top: -48%;
-    
-    font-size: 16px;
-    margin-bottom: -5%;
+    margin-left: 43%;
 }
 .numberOfGreetings{
-    margin-left: 12px;
-    font-size: 25px;
-}
-
-@media only screen and (min-Width: 412px){
-    .greetings{
-        margin: auto;
-        padding: 1rem;
-        font-size: 20px;
-    }
-    .answer{
-        margin-top: -46%;
-        border:  none;
-    }
-    .greet{
-        margin-left: 5px;
-        margin-left: 32px;
-    }
-    .reset{
-        margin-right: 180px;
-        height: 50px;
-        font-size: 20px;
-        cursor: pointer;
-    }
-}
-
-@media only screen and (min-Width: 540px){
-    .answer{
-        margin-top: -34%;
-        border:  none;
-    }
-    .greet{
-        margin-left: 5px;
-    }
-    .reset{
-        margin-right: 330px;
-    }
-}
-
-@media only screen and (min-Width: 768px){
-    .greetings{
-        width: 30%;
-        margin: auto;
-        padding: 1rem;
-        font-size: 18px;
-    }
-    .answer{
-        width: 38%;
-        height: 167px;
-        float: right;
-        border: none;
-        margin-right: 2px;
-        margin-top: -68%;
-        
-        font-size: 16px;
-        margin-bottom: -5%;
-    }
-    .greet{
-        height: 30px;
-        margin-left: 10px;
-        background-color: grey;
-        float: left;
-        width: 22%;
-        font-size: 15px;
-        cursor: pointer;
-    }
-    .reset{
-        height: 30px;
-        width: 22%;
-        margin-right: 110px;
-        background-color: grey;
-        float: right;
-        font-size: 15px;
-        cursor: pointer;
-    }
-}
-@media only screen and (min-Width: 820px){
-    .greetings{
-        width: 30%;
-        margin: auto;
-        padding: 1rem;
-        font-size: 18px;
-    }
-    .answer{
-        width: 38%;
-        height: 167px;
-        float: right;
-        margin-right: 2px;
-        border: none;
-        margin-top: -65%;
-        
-        font-size: 16px;
-        margin-bottom: -5%;
-    }
-    .greet{
-        height: 40px;
-        margin-left: 10px;
-        background-color: grey;
-        float: left;
-        font-size: 17px;
-        cursor: pointer;
-    }
-    .reset{
-        height: 40px;
-        margin-right: 110px;
-        background-color: grey;
-        float: right;
-        font-size: 17px;
-        cursor: pointer;
-    }
-}
-@media only screen and (min-Width: 912px){
-    .greetings{
-        font-size: 20px;
-    }
-    .answer{
-        margin-top: -60%;
-        border:  none;
-    }
-    .greet{
-        margin-left: 5px;
-        font-size: 20px;
-    }
-    .reset{
-        margin-right: 120px;
-        font-size: 20px;
-    }
-}
-@media only screen and (min-Width: 1024px){
-    .answer{
-        width: 43%;
-        height: 180px;
-        float: right;
-        margin-right: 2px;
-        border: none;
-        margin-top: -54%;
-        
-        font-size: 16px;
-        margin-bottom: -5%;
-    }
-    .greet{
-        margin-left: 1px;
-        height: 50px;
-        background-color: grey;
-        float: left;
-        font-size: 20px;
-        cursor: pointer;
-    }
-    .reset{
-        height: 50px;
-        margin-right: 160px;
-        background-color: grey;
-        float: right;
-        font-size: 20px;
-        cursor: pointer;
-    }
-}
-@media only screen and (min-Width: 1280px){
-    .greetings{
-        margin: auto;
-        padding: 1rem;
-        font-size: 25px;
-    }
-    .answer{
-        width: 41%;
-        height: 180px;
-        float: right;
-        margin-right: 2px;
-        border: none;
-        margin-top: -53%;
-        
-        font-size: 24px;
-        margin-bottom: -5%;
-    }
-    .name-text{
-        width: 45%;
-        height: 40px;
-        border:  2px solid #2980B9;
-        float: left;
-        font-size: 16px;
-        margin: 0px 0px 10px 0px;
-    } 
-    .greet{
-        margin-left: 1px;
-        height: 50px;
-        background-color: grey;
-        float: left;
-        font-size: 20px;
-        cursor: pointer;
-    }
-    .reset{
-        height: 50px;
-        margin-right: 200px;
-        background-color: grey;
-        float: right;
-        font-size: 20px;
-        cursor: pointer;
-    }
-}
-@media only screen and (min-Width: 1320px){
-    .answer{
-        width: 43%;
-        height: 180px;
-        float: right;
-        margin-right: 2px;
-        border: none;
-        margin-top: -44%;
-        
-        font-size: 24px;
-    }
-    .greet{
-        margin: 8px 0px 0px 0px;
-        margin-left: 27px;
-        height: 50px;
-        background-color: grey;
-        float: left;
-        font-size: 20px;
-        cursor: pointer;
-    }
-    .reset{
-        margin: 8px 0px 0px 0px;
-        height: 50px;
-        margin-right: 200px;
-        background-color: grey;
-        float: right;
-        font-size: 20px;
-        cursor: pointer;
-    }
+    margin-left: 4px;
+    font-size: 20px;
+    margin-top: -3%;
 }

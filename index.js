@@ -8,7 +8,7 @@ const session = require('express-session');
 const app = express();
 const greetings = Greet();
 
-app.engine("handlebars", exphbs.engine({ extname: "handlebars", defaultLayout: false }));
+app.engine("handlebars", exphbs.engine({ extname: "handlebars", layoutsDir: __dirname + '/views/layouts' }));
 app.set("view engine", "handlebars");
 
 app.use(express.static("public"));
@@ -26,20 +26,26 @@ app.use(bodyParser.json());
 
 app.get("/", function(req, res){
   res.render("index", {
+    greetedNames: greetings.showTheCounter(),
     settings: greetings.getName(),
-    names: greetings.returnMessage(),
-    greetedNames: greetings.showTheCounter()
+    theUser: greetings.greetingTheUser(),
+    // greetedNames: greetings.showTheCounter()
   }); 
+  console.log(greetings.showTheCounter());
 });
 
 app.post("/greet", function(req, res){
+  const name = req.body.name;
+  const language = req.body.language;
   greetings.setName(
-    req.body.name
+    name
   );
+  greetings.setLanguage(
+    language
+  );
+  greetings.storingNames();
   req.flash('info', greetings.displayigErrorMessages());
-  greetings.greetingTheUser(req.body.radioBtn);
-  
-  res.redirect("/");
+  res.redirect('/')
 });
 
 app.get('/greeted', function(req, res){
@@ -54,6 +60,11 @@ app.get("/counter/:name", function(req, res){
     user: name,
     count: greetings.countingAllGreetedUsers(name)
   });
+});
+
+app.post('/clear', function(req, res){
+  greetings.clearData();
+  res.redirect('/');
 });
 
 const PORT = process.env.PORT || 5001;

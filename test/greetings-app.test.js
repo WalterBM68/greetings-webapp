@@ -38,13 +38,6 @@ describe('The Greeting App', function(){
         assert.equal('Hello Walter', greet.greetingTheUser('english'));
     });
 
-    it('It should be able to greet the user in Tshivenda', function(){
-        const greet = GreetApp();
-        
-        greet.setName('Nedzelele');
-        assert.equal('Ndi matsheloni Nedzelele', greet.greetingTheUser('venda'));
-    });
-
     it('It should be able to greet the user in IsiZulu', function(){
         const greet = GreetApp();
         
@@ -59,12 +52,6 @@ describe('The Greeting App', function(){
         assert.equal('Thobela Kgotso', greet.greetingTheUser('pedi'));
     });
 
-    it('It should be able to greet the user in SeSotho', function(){
-        const greet = GreetApp();
-        
-        greet.setName('Tumelo');
-        assert.equal('Dumelang Tumelo', greet.greetingTheUser('sotho'));
-    });
 
     it('It should be able to count how many times a user has been greeted', function(){
         const greet = GreetApp();
@@ -90,8 +77,7 @@ describe('The Greeting App', function(){
         greet.setName('Musa');
         greet.setName('Musa');
         greet.setName('Musa');
-        greet.countingAllGreetedUsers('Musa');
-        assert.equal(3, greet.returnAllGreetedUsers());
+        assert.equal(3, greet.countingAllGreetedUsers('Musa'));
     });
 
 });
