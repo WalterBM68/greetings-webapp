@@ -28,10 +28,8 @@ app.get("/", function(req, res){
   res.render("index", {
     greetedNames: greetings.showTheCounter(),
     settings: greetings.getName(),
-    theUser: greetings.greetingTheUser(),
-    // greetedNames: greetings.showTheCounter()
+    theUser: greetings.greetingTheUser()
   }); 
-  console.log(greetings.showTheCounter());
 });
 
 app.post("/greet", function(req, res){
@@ -71,4 +69,3 @@ const PORT = process.env.PORT || 5001;
 app.listen(PORT, function(){
   console.log("The greetings app started at port:", PORT);
 });
-
