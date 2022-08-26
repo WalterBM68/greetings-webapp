@@ -1,9 +1,9 @@
 
 <h2 style="text-align:center;">Below are the greeted names</h2>
 <div style="text-align:center;">
-{{#each greeted}}
-    <a href="/counter/{{this}}" style="text-decoration:none;">
-    <h2>{{this}}</h2>
+{{#each allNames}}
+    <a href="/counter/{{name}}" style="text-decoration:none;">
+    <h2>{{name}}</h2>
     </a>
 {{/each}}
 </div>

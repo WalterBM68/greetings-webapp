@@ -2,36 +2,33 @@
     <h2>Greeting App</h2>
     <form action="/greet" method="POST">
         <div class="textbox">
-            {{#if messages.info}}
+            
             <div class="name-validate" id="validate">
                 <h4> {{messages.info}} </h4>
             </div>
-            {{/if}}
-
-            <input class="name-text" type="text" name="name" placeholder="Enter your name" value="{{settings.name}}">
-            <span class="numberOfGreetings" name="count">Total of greeted names: {{greetedNames}}</span>
+            
+            <input class="name-text" type="text" name="name" placeholder="Enter your name" value=""/>  
+            <span class="numberOfGreetings" name="count">Total of greeted names: {{count}}</span>
         </div>
 
-        <label for="">
-            <h4>Select language:</h4>
-            <input type="radio" name="language" id="radioButton" class="theRadioBtn1" value="english">
-            <span class="label-body">English</span>
+        <h4>Select language:</h4>
+        <input type="radio" name="language" id="radioButton" class="theRadioBtn1" value="english">
+        <span class="label-body">English</span>
 
-            <input type="radio" name="language" id="radioButton" class="theRadioBtn2" value="zulu">
-            <span class="label-body">IsiZulu</span>
+        <input type="radio" name="language" id="radioButton" class="theRadioBtn2" value="zulu">
+        <span class="label-body">IsiZulu</span>
 
-            <input type="radio" name="language" id="radioButton" class="theRadioBtn3" value="pedi">
-            <span class="label-body">Sepedi</span>
-        </label>
-     
+        <input type="radio" name="language" id="radioButton" class="theRadioBtn3" value="pedi">
+        <span class="label-body">Sepedi</span>
+
         <div class="buttons">
-            <button class="greet" type="submit" name="button">Greet</button>
-    </form>
-
-    <form action="/clear" method="POST">
-        <button class="reset" type="submit" name="button">Clear</button>
+            <button class="greet" type="submit">Greet</button>
     </form>
     </div>
+
+    <form action="/clear" method="POST">
+        <button class="reset" type="submit">Clear</button>
+    </form>
 
     <div class="greetedNames">
         <a href="/greeted"> Show greeted names </a>

@@ -1,12 +1,14 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
-const Greet = require("./greetings-app");
 const flash = require('express-flash');
 const session = require('express-session');
-
 const app = express();
-const greetings = Greet();
+const pgPromise = require("pg-promise");
+const pgp = pgPromise();
+const Greet = require("./greetings-app");
+const Routes = require('./routes');
+const GreetingDb = require('./database');
 
 app.engine("handlebars", exphbs.engine({ extname: "handlebars", layoutsDir: __dirname + '/views/layouts' }));
 app.set("view engine", "handlebars");
@@ -20,50 +22,25 @@ app.use(
   })
 );
 app.use(flash());
-
+  
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/", function(req, res){
-  res.render("index", {
-    greetedNames: greetings.showTheCounter(),
-    settings: greetings.getName(),
-    theUser: greetings.greetingTheUser()
-  }); 
-});
+const DATABASE_URL = process.env.DATABASE_URL || 'postgresql://postgres:pg123@localhost:5432/greetings';
+const config = {
+  connectionString: DATABASE_URL
+}
+const db = pgp(config);
+const greetings = Greet();
+const greetingDb = GreetingDb(db);
+const routes = Routes(greetingDb, greetings);
 
-app.post("/greet", function(req, res){
-  const name = req.body.name;
-  const language = req.body.language;
-  greetings.setName(
-    name
-  );
-  greetings.setLanguage(
-    language
-  );
-  greetings.storingNames();
-  req.flash('info', greetings.displayigErrorMessages());
-  res.redirect('/')
-});
-
-app.get('/greeted', function(req, res){
-  res.render('greeted', {
-    greeted: greetings.returnNoDuplicates(),
-  });
-});
-
-app.get("/counter/:name", function(req, res){
-  const name = req.params.name;
-  res.render('counter',{
-    user: name,
-    count: greetings.countingAllGreetedUsers(name)
-  });
-});
-
-app.post('/clear', function(req, res){
-  greetings.clearData();
-  res.redirect('/');
-});
+app.get("/", routes.showTheInterface)
+app.get("/greet", routes.getInterface);
+app.post("/greet", routes.postInterface);
+app.get('/greeted', routes.showGreetedNames);
+app.get("/counter/:name", routes.countForEachUser);
+app.post('/clear', routes.clearingGreetedUsers);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, function(){
