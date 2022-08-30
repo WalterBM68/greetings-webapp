@@ -36,7 +36,6 @@ const greetingDb = GreetingDb(db);
 const routes = Routes(greetingDb, greetings);
 
 app.get("/", routes.showTheInterface)
-app.get("/greet", routes.getInterface);
 app.post("/greet", routes.postInterface);
 app.get('/greeted', routes.showGreetedNames);
 app.get("/counter/:name", routes.countForEachUser);

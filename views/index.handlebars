@@ -2,32 +2,28 @@
     <h2>Greeting App</h2>
     <form action="/greet" method="POST">
         <div class="textbox">
-            
-            <div class="name-validate" id="validate">
-                <h4> {{messages.info}} </h4>
-            </div>
-            
-            <input class="name-text" type="text" name="name" placeholder="Enter your name" value=""/>  
+            {{#if messages.info}}
+                <div class="name-validate" id="validate">
+                    <h4> {{messages.info}} </h4>
+                </div>          
+            {{/if}}
+            <input class="name-text" type="text" name="name" placeholder="Enter your name" value=""/>
             <span class="numberOfGreetings" name="count">Total of greeted names: {{count}}</span>
         </div>
 
         <h4>Select language:</h4>
-        <input type="radio" name="language" id="radioButton" class="theRadioBtn1" value="english">
-        <span class="label-body">English</span>
-
-        <input type="radio" name="language" id="radioButton" class="theRadioBtn2" value="zulu">
-        <span class="label-body">IsiZulu</span>
-
-        <input type="radio" name="language" id="radioButton" class="theRadioBtn3" value="pedi">
-        <span class="label-body">Sepedi</span>
-
+        <div class="radioBtns">
+            <input type="radio" name="language" id="radioButton" class="theRadioBtn" value="english">English
+            <input type="radio" name="language" id="radioButton" class="theRadioBtn" value="zulu">IsiZulu
+            <input type="radio" name="language" id="radioButton" class="theRadioBtn" value="pedi">Sepedi
+        </div>
         <div class="buttons">
             <button class="greet" type="submit">Greet</button>
     </form>
-    </div>
 
     <form action="/clear" method="POST">
-        <button class="reset" type="submit">Clear</button>
+            <button class="reset" type="submit">Clear</button>
+        </div>
     </form>
 
     <div class="greetedNames">
@@ -37,8 +33,7 @@
     <div class="theCounter">
         <a href="/counter"></a>
     </div>
-</div>
-
-<div class="text-answer">
-    <span class="answer" value="" type="span">{{theUser}}</span>
+    <div class="text-answer">
+        <span class="answer" value="" type="span">{{theUser}}</span>
+    </div>
 </div>

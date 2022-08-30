@@ -1,55 +1,43 @@
 module.exports = function greetingsFunction(){
-    let name = '';
-    let language = '';
+    let greetingMessage = '';
+    let errorMsg = '';
 
-    function setName(userName){
-        name = userName;
-    } 
-    function getName(){
-        return name;
-    }
-    function setLanguage(theLanguage){
-        language = theLanguage;
-    }
-    function getLanguage(){
-        if(language === 'english'){
-            return 'Hello';
-        }else if(language === 'zulu'){
-            return 'Sawubona';
-        }else if(language === 'pedi'){
-            return 'Thobela';
-        }else if(name !== ''){
-            return name = '';
-        }else{
-            return language = '';
+    function getLanguage(name, language){
+        if(language === 'english' && name !== ''){
+            greetingMessage = 'Hello ' + name;
         }
+        if(language === 'zulu' && name !== ''){
+            greetingMessage = 'Sawubona ' + name;
+        }
+        if(language === 'pedi' && name !== ''){
+            greetingMessage = 'Thobela ' + name;
+        }
+        return greetingMessage;
     }
-    function displayigErrorMessages(){
-        if(name === '' && language !== ''){
-            return 'Name is required!';
+
+    function displayigErrorMessages(name, language){
+        if(name == '' && language == null){
+            errorMsg = 'Please enter the name & select a language';
+        }else if(name == ''){
+            errorMsg = 'Please enter the name';
+        }else if(!language){
+            errorMsg = 'Please select the language';
         }
-        else if(name == Number(name)){
-            return 'Enter the name not the number';
-        }
-        else if(!language){
-            return 'Please select a language';
-        }
+        return errorMsg;
     }
+
+    function getErrorMsg(){
+        return errorMsg;
+    }
+
     function greetingTheUser(){
-        let message = `${getLanguage()} ${name}`
-        return message; 
+        return greetingMessage; 
     }
-    function clearData(){
-        name = '';
-        language = '';
-    }
+    
     return{
-        setName,
-        getName,
-        setLanguage,
         getLanguage,
         displayigErrorMessages,  
-        greetingTheUser, 
-        clearData,
+        greetingTheUser,
+        getErrorMsg 
     }
 }
