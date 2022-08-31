@@ -99,7 +99,3 @@ describe('Testing Database', function(){
         db.$pool.end;
     });
 });
-
-// beforeEach(async function(){
-    //     await db.none('delete from greet;')
-    // });

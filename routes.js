@@ -49,7 +49,7 @@ module.exports = Routes = (greetingDb, greetings) => {
         const name = req.params.name;
         const username = await greetingDb.getUser(name);
         const greetMsg = username.count  > 1 ? username.name + " you have been greeted " + username.count + 
-            " times " : username.name + " you have been greeted " + username.count + " once ";
+            " times " : username.name + " you have been greeted " + username.count + " time ";
         res.render('counter',{
           greetMsg
         });

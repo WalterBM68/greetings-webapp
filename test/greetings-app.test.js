@@ -1,4 +1,4 @@
-
+/*
 const assert = require('assert');
 const GreetApp = require("../greetings-app");
 
@@ -40,3 +40,4 @@ describe('The Greeting App', function(){
         assert.equal('Thobela Kgotso', greet.greetingTheUser());
     });
 });
+*/
