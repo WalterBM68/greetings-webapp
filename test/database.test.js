@@ -5,8 +5,8 @@ const pgPromise = require("pg-promise");
 const pgp = pgPromise();
 
 const DATABASE_URL = process.env.DATABASE_URL || 'postgresql://postgres:pg123@localhost:5432/testing';
-const config = {
-    connectionString: DATABASE_URL
+const config = { 
+	connectionString : DATABASE_URL
 }
 if (process.env.NODE_ENV == 'production') {
 	config.ssl = { 
