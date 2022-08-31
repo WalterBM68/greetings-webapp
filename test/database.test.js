@@ -12,10 +12,6 @@ const db = pgp(config);
 
 describe('Testing Database', function(){
 
-    beforeEach(async function(){
-        await db.none('delete from greet;')
-    });
-
     it('Should insert Palesa into the table', async function(){
         try{
             let greetingDb = GreetingDb(db);
@@ -23,6 +19,7 @@ describe('Testing Database', function(){
             let results = await greetingDb.getStoredNames();
             
             assert.equal('Palesa', results[0].name);
+            await db.none('delete from greet;')
         }catch(err){
             console.log(err);
         }
@@ -36,6 +33,7 @@ describe('Testing Database', function(){
             let results = await greetingDb.getStoredNames();
     
             assert.equal(2, results[0].count);
+            await db.none('delete from greet;')
         }catch(err){
             console.log(err);
         }
@@ -52,6 +50,7 @@ describe('Testing Database', function(){
             assert.equal('Palesa', results[0].name);
             assert.equal('Morena', results[1].name);
             assert.equal('Dikeledi', results[2].name);
+            await db.none('delete from greet;')
         }catch(err){
             console.log(err);
         }
@@ -63,6 +62,7 @@ describe('Testing Database', function(){
             await greetingDb.storeName('Morena')
             let results = await greetingDb.getStoredNames()
             assert.equal(1, results[0].count);
+            await db.none('delete from greet;')
         }catch(err){
             console.log(err);
         }
@@ -75,6 +75,7 @@ describe('Testing Database', function(){
             await greetingDb.storeName('Dikeledi');
             let results = await greetingDb.getStoredNames();
             assert.equal(2, results[0].count);
+            await db.none('delete from greet;')
         }catch(err){
             console.log(err);
         }
@@ -83,7 +84,7 @@ describe('Testing Database', function(){
     it('Should delete all names in the table', async function(){
         try{
             let greetingDb = GreetingDb(db);
-            assert.equal('', await greetingDb.clearingData());
+            assert.equal(null, await greetingDb.clearingData());
         }catch(err){
             console.log(err);
         }
@@ -93,3 +94,7 @@ describe('Testing Database', function(){
         db.$pool.end;
     });
 });
+
+// beforeEach(async function(){
+    //     await db.none('delete from greet;')
+    // });
