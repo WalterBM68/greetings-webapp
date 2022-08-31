@@ -10,6 +10,17 @@ const Greet = require("./greetings-app");
 const Routes = require('./routes');
 const GreetingDb = require('./database');
 
+const DATABASE_URL = process.env.DATABASE_URL || 'postgresql://postgres:pg123@localhost:5432/greetings';
+const config = {
+  connectionString: DATABASE_URL
+}
+if (process.env.NODE_ENV == 'production') {
+	config.ssl = { 
+		rejectUnauthorized : false
+	}
+}
+const db = pgp(config);
+
 app.engine("handlebars", exphbs.engine({ extname: "handlebars", layoutsDir: __dirname + '/views/layouts' }));
 app.set("view engine", "handlebars");
 
@@ -25,17 +36,6 @@ app.use(flash());
   
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-const DATABASE_URL = process.env.DATABASE_URL || 'postgresql://postgres:pg123@localhost:5432/greetings';
-const config = {
-  connectionString: DATABASE_URL
-}
-if (process.env.NODE_ENV == 'production') {
-	config.ssl = { 
-		rejectUnauthorized : false
-	}
-}
-const db = pgp(config);
 
 const greetings = Greet();
 const greetingDb = GreetingDb(db);
