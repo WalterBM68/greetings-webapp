@@ -28,8 +28,9 @@ module.exports = Routes = (greetingDb, greetings) => {
         const name = req.body.name;
         const language = req.body.language;
         if(name && language){
-            greetingDb.storeName(name);
-            greetings.getLanguage(name, language);
+            let user = name.charAt(0).toUpperCase() + name.slice(1);
+            greetingDb.storeName(user);
+            greetings.getLanguage(user, language);
         }else{
             req.flash('info', greetings.displayigErrorMessages(name, language));
         } 
@@ -38,7 +39,7 @@ module.exports = Routes = (greetingDb, greetings) => {
 
     //Greeted names route
     async function showGreetedNames(req, res){
-        const allNames = await greetingDb.getStoredNames();
+        let allNames = await greetingDb.getStoredNames();
         res.render('greeted', {
             allNames
         });
